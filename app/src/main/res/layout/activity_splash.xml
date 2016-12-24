@@ -1,0 +1,43 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    tools:context=".SplashActivity">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:layout_centerVertical="true"
+        android:gravity="center"
+        android:background="@color/cast_intro_overlay_background_color">
+
+        <ImageView
+            android:id="@+id/splashImage"
+            android:src="@drawable/app_logo_hd"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:longClickable="false"
+            android:layout_centerHorizontal="false"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp">
+
+        </ImageView>
+
+        <TextView
+        android:id="@+id/splashText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/SplashAppTitle"
+        android:textColor="@color/colorAppLogo"
+        android:layout_centerHorizontal="false"
+            android:textSize="36dp"
+        android:background="@color/cardview_light_background"
+        android:fadingEdge="horizontal|vertical"
+            android:layout_centerInParent="false"
+            android:layout_centerVertical="false"
+            android:layout_alignParentTop="false"
+            android:gravity="fill_vertical|center_horizontal|clip_vertical" />
+    </LinearLayout>
+
+</RelativeLayout>

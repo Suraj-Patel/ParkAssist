@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="parkassist.cloud.com.parkassist">
+
+    <uses-sdk
+        android:minSdkVersion="19"
+        android:targetSdkVersion="25" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_app_icon"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:name="parkassist.cloud.com.parkassist.Application">
+        <activity
+            android:name="parkassist.cloud.com.parkassist.ParkSearch"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+
+        <activity
+            android:name=".SplashActivity"
+            android:label="@string/app_name"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".SignInActivity"
+            android:label="@string/title_activity_sign_in"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+            >
+        </activity>
+        <activity
+            android:name=".demo.userpools.ForgotPasswordActivity"
+            android:label="@string/title_activity_forgot_password"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+            >
+        </activity>
+        <activity
+            android:name=".demo.userpools.SignUpActivity"
+            android:label="@string/title_activity_sign_up"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+            >
+        </activity>
+        <activity
+            android:name=".demo.userpools.MFAActivity"
+            android:label="@string/title_activity_mfa"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+            >
+        </activity>
+        <activity
+            android:name=".demo.userpools.SignUpConfirmActivity"
+            android:label="@string/title_activity_sign_up_confirm"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+            >
+        </activity>
+
+        <!-- BEGIN - FACEBOOK SIGN-IN -->
+
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name" />
+
+        <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id" />
+
+        <!-- END - FACEBOOK SIGN-IN -->
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <!-- BEGIN - PUSH NOTIFICATIONS WITH GOOGLE CLOUD MESSAGING (GCM) -->
+
+        <receiver
+            android:name="com.google.android.gms.gcm.GcmReceiver"
+            android:exported="true"
+            android:permission="com.google.android.c2dm.permission.SEND" >
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <category android:name="parkassist.cloud.com.parkassist" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name=".PushListenerService"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+            </intent-filter>
+        </service>
+
+        <!-- END - PUSH NOTIFICATIONS WITH GOOGLE CLOUD MESSAGING (GCM) -->
+
+
+        <!--Google MAP API key-->
+
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="AIzaSyCqMkhf_NyzZU7B_osafsO_4rZ01acAKgo" />
+
+        <!-- Set custom default icon. This is used when no icon is set for incoming notification messages.
+        See README(https://goo.gl/l4GJaQ) for more. -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/ic_directions_car_black_24dp" />
+        <!-- Set color used with incoming notification messages. This is used when no color is set for the incoming
+             notification message. See README(https://goo.gl/6BKBk7) for more. -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/colorAccent" />
+
+        <!---->
+
+        <!--<service-->
+            <!--android:name=".MyFirebaseMessagingService">-->
+            <!--<intent-filter>-->
+                <!--<action android:name="com.google.firebase.MESSAGING_EVENT"/>-->
+            <!--</intent-filter>-->
+        <!--</service>-->
+
+        <!--<service-->
+            <!--android:name=".FirebaseIDService">-->
+            <!--<intent-filter>-->
+                <!--<action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>-->
+            <!--</intent-filter>-->
+        <!--</service>-->
+
+
+        <receiver android:name=".AlarmReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+    </application>
+
+    <uses-permission android:name="com.android.alarm.permission.SET_ALARM"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"></uses-permission>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <permission android:name="parkassist.cloud.com.parkassist.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+    <uses-permission android:name="parkassist.cloud.com.parkassist.permission.C2D_MESSAGE" />
+
+</manifest>
